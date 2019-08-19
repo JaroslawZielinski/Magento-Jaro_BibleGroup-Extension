@@ -1,0 +1,17 @@
+<style type="text/css">
+    /*<![CDATA[*/
+    #<?php echo $this->_getFormHtmlId(); ?> div.entry-edit-head{
+        cursor: pointer;
+    }
+    /*]]>*/
+</style>
+<script>
+    //<![CDATA[
+    $('<?php echo $this->_getFormHtmlId(); ?>').select('div.entry-edit-head')[0].observe('click', function (event) {
+        $('<?php echo $this->_getFieldsetHtmlId();?>').toggle();
+    });
+    <?php if ($this->getData('isEdit')) : ?>
+        $('<?php echo $this->_getFieldsetHtmlId();?>').toggle('false');
+    <?php endif;?>
+    //]]>
+</script>

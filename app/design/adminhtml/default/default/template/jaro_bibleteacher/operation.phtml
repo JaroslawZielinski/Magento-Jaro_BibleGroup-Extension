@@ -1,0 +1,22 @@
+<?php
+header('Content-Type: application/json');
+
+$p = $this->getRequest()->getParams();
+$parts = [
+    'verse-books' => $p['verse-books'],
+    'verse-chapters' => $p['verse-chapters'],
+    'verse-verse-start' => $p['verse-verse-start'],
+    'verse-verse-stop' => $p['verse-verse-stop'],
+    'verse-numbering' => $p['verse-numbering'],
+    'verse-translations' => $p['verse-translations']
+];
+
+try {
+    $result = Mage::helper('jaro_bibleteacher')->getVersesHelper()->getVerse($parts);
+
+    $array = array_map('htmlentities', $result);
+    $json = html_entity_decode(json_encode($array));
+    echo $json;
+} catch (Error $e) {
+    echo $e->getMessage();
+}

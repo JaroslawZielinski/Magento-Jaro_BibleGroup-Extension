@@ -1,0 +1,28 @@
+{
+  "name": "jaroslawzielinski/jaro_biblegroup",
+  "type": "magento-module",
+  "description": "Bible group tool",
+  "require": {
+  },
+  "authors":[
+    {
+      "name": "Jaroslaw Zielinski"
+    }
+  ],
+  "extra": {
+    "map" : [
+      ["app/etc/modules/Jaro_BibleTeacher.xml", "app/etc/modules/Jaro_BibleTeacher.xml"],
+      ["app/code/local/Jaro/BibleTeacher", "app/code/local/Jaro/BibleTeacher"],
+      ["app/design/adminhtml/default/default/layout/jaro_bibleteacher.xml", "app/design/adminhtml/default/default/layout/jaro_bibleteacher.xml"],
+      ["app/design/adminhtml/default/default/template/jaro_bibleteacher", "app/design/adminhtml/default/default/template/jaro_bibleteacher"],
+      ["locale/en_US/Jaro_BibleTeacher.csv", "locale/en_US/Jaro_BibleTeacher.csv"],
+      ["js/protolicious", "js/protolicious"],
+      ["lib/guiguiboy/php-cli-progress-bar", "lib/guiguiboy/php-cli-progress-bar"],
+      ["shell/Bible", "shell/Bible"],
+      ["shell/fetch_all_verses_all_translations.php", "shell/fetch_all_verses_all_translations.php"],
+      ["shell/import_canons.php", "shell/import_canons.php"],
+      ["shell/test_all_verses_all_translations.php", "shell/test_all_verses_all_translations.php"],
+      ["skin/adminhtml/default/default/css/jarobibleteacher", "skin/adminhtml/default/default/css/jarobibleteacher"]
+    ]
+  }
+}

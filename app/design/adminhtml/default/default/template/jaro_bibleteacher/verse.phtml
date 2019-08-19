@@ -1,0 +1,301 @@
+<?php
+$bibleStructure = $this->_getBibleStructure();
+$booksNames = array_column($bibleStructure, 'name');
+
+$defaultValues = $this->getData('value', null);
+
+$uniqid = $this->_getUID();
+$verseTranslations = 'verse_translations' . $uniqid;
+$verseNumbering = 'verse_numbering' . $uniqid;
+$versesContainer = 'verses_container' . $uniqid;
+$versesFieldset = 'verses_fieldset' . $uniqid;
+$verseBooks = 'verse_books' . $uniqid;
+$verseChapters = 'verse_chapters' . $uniqid;
+$verseVerseStart = 'verse_verse_start' . $uniqid;
+$verseVerseStop = 'verse_verse_stop' . $uniqid;
+$versePreviewButton = 'verse_preview_button' . $uniqid;
+$versePreviewLink = 'verse_preview_link' . $uniqid;
+$versePreviewTextArea = 'verse_preview_text_area' . $uniqid;
+?>
+<link rel="stylesheet" type="text/css" href="<?php echo $this->getSkinUrl('css/jarobibleteacher/verse.css',array('_secure'=>false));?>" media="all" />
+<div id="<?php echo $versesContainer; ?>">
+    <fieldset>
+        <div class="hor-scroll box-center">
+            <table class="form-list" cellspacing="0">
+                <tbody>
+                <tr>
+                    <td class="label">
+                        <label style="">
+                            <span class="label-bold"><?php echo Mage::helper('jaro_bibleteacher')->__('Ustawienia:'); ?></span>
+                        </label>
+                    </td>
+                    <td class="value">
+                    </td>
+                </tr>
+                <tr>
+                    <td class="label">
+                        <label style="">
+                            <?php echo Mage::helper('jaro_bibleteacher')->__('Tłumaczenie:'); ?>
+                        </label>
+                    </td>
+                    <td class="value">
+                        <select name="verse-translations" id="<?php echo $verseTranslations; ?>">
+                            <?php foreach ($this->getTranslations() as $option): ?>
+                                <option value="<?php echo $option['value']; ?>"><?php echo $option['label']; ?></option>
+                            <?php endforeach; ?>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="label">
+                        <label style="">
+                            <?php echo Mage::helper('jaro_bibleteacher')->__('Numerowanie wersetów:'); ?>
+                        </label>
+                    </td>
+                    <td class="value">
+                        <select name="verse-numbering" id="<?php echo $verseNumbering; ?>">
+                            <?php foreach ($this->getNumberings() as $option): ?>
+                                <option value="<?php echo $option['value']; ?>"><?php echo $option['label']; ?></option>
+                            <?php endforeach; ?>
+                        </select>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </fieldset>
+    <fieldset>
+        <div class="hor-scroll box-center">
+            <table class="form-list" cellspacing="0">
+                <tbody>
+                <tr>
+                    <td class="label">
+                        <label style="">
+                            <span class="label-bold"><?php echo Mage::helper('jaro_bibleteacher')->__('Wybór wersetu:'); ?></span>
+                        </label>
+                    </td>
+                    <td class="value">
+                    </td>
+                </tr>
+                <tr>
+                    <td class="label">
+                        <label for="verse-books" style="">
+                            <?php echo Mage::helper('jaro_bibleteacher')->__('Księga'); ?> <span
+                                class="required">*</span>
+                        </label>
+                    </td>
+                    <td class="value">
+                        <select name="verse-books" id="<?php echo $verseBooks; ?>">
+                            <optgroup label="Stary Testament">
+                            </optgroup>
+                            <optgroup label="Nowy Testament">
+                            </optgroup>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="label">
+                        <label for="verse-chapters" style="">
+                            <?php echo Mage::helper('jaro_bibleteacher')->__('Rozdział'); ?> <span
+                                class="required">*</span>
+                        </label>
+                    </td>
+                    <td class="value">
+                        <select name="verse-chapters" id="<?php echo $verseChapters; ?>"></select>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="label">
+                        <label for="verse-verse-start" style="">
+                            <?php echo Mage::helper('jaro_bibleteacher')->__('Wers początku'); ?> <span
+                                class="required">*</span>
+                        </label>
+                    </td>
+                    <td class="value">
+                        <select name="verse-verse-start" id="<?php echo $verseVerseStart; ?>"></select>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="label">
+                        <label for="verse-verse-stop" style="">
+                            <?php echo Mage::helper('jaro_bibleteacher')->__('Wers końca'); ?> <span
+                                class="required">*</span>
+                        </label>
+                    </td>
+                    <td class="value">
+                        <select name="verse-verse-stop" id="<?php echo $verseVerseStop; ?>"></select>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </fieldset>
+</div>
+<fieldset>
+    <div class="hor-scroll box-center">
+        <table class="form-list" cellspacing="0">
+            <tbody>
+            <tr>
+                <td class="label">
+                    <button id="<?php echo $versePreviewButton; ?>" class="scalable save submit-button">
+                            <span>
+                                <span>
+                                    <span>
+                                        <?php echo Mage::helper('jaro_bibleteacher')->__('Podgląd'); ?>
+                                    </span>
+                                </span>
+                            </span>
+                    </button>
+                </td>
+                <td class="value">
+                </td>
+            </tr>
+            <tr>
+                <td class="label" style="width:60%;">
+                    <a id="<?php echo $versePreviewLink ?>" href="" target="_blank" style="display:none;"></a>
+                </td>
+                <td class="value">
+                </td>
+            </tr>
+            <tr>
+                <td class="label">
+                    <textarea id="<?php echo $versePreviewTextArea; ?>" class="textarea"
+                              onclick="" onchange="" readonly="" tabindex="1" rows="15" cols="100"></textarea>
+                </td>
+                <td class="value">
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</fieldset>
+<script>
+    var bibleStructure = <?php echo json_encode($bibleStructure); ?>;
+    var verseBooksNumber = 0;
+    var countVersesStart = 0;
+    document.observe("dom:loaded", function () {
+        //Bible component init
+        bibleStructure.each(function (table, index) {
+            var select;
+            if (index < 46) {
+                select = 'optgroup:first-child';
+            } else {
+                select = 'optgroup:nth-child(2)';
+            }
+            $('<?php echo $verseBooks; ?>').select(select)[0].appendChild(
+                new Element('option', {value: table['sname'], nr: index})
+                    .update(table['name'])
+            );
+        });
+
+        //Books events
+        $('<?php echo $verseBooks; ?>').observe('change', function (event) {
+            var value = $(this).value;
+            var option = $$('#<?php echo $verseBooks; ?> option[value="' + value + '"]');
+            var element = $(option).toArray()[0];
+            verseBooksNumber = element.readAttribute('nr');
+            var countChapters = bibleStructure[verseBooksNumber]['struc'].length;
+            $('<?php echo $verseChapters; ?>').update('');
+            for (var i = 0; i < countChapters; i++) {
+                $('<?php echo $verseChapters; ?>').appendChild(
+                    new Element('option', {value: i})
+                        .update(i + 1)
+                );
+            }
+            $('<?php echo $verseChapters; ?>').show();
+            $('<?php echo $verseVerseStart; ?>').hide();
+            $('<?php echo $verseVerseStop; ?>').hide();
+
+            $('<?php echo $verseChapters; ?>').simulate('change');
+        });
+
+        //Chapter events
+        $('<?php echo $verseChapters; ?>').observe('change', function (event) {
+            var value = $(this).value;
+            countVersesStart = bibleStructure[verseBooksNumber]['struc'][value];
+            $('<?php echo $verseVerseStart; ?>').update('');
+            for (var i = 0; i < countVersesStart; i++) {
+                $('<?php echo $verseVerseStart; ?>').appendChild(
+                    new Element('option', {value: i})
+                        .update(parseInt(i) + 1)
+                );
+            }
+            $('<?php echo $verseVerseStart; ?>').show();
+            $('<?php echo $verseVerseStop; ?>').hide();
+
+            $('<?php echo $verseVerseStop; ?>').value = 0;
+            $('<?php echo $verseVerseStart; ?>').simulate('change');
+        });
+
+        //Verse Start events
+        $('<?php echo $verseVerseStart; ?>').observe('change', function (event) {
+            var val = $(this).value;
+            $('<?php echo $verseVerseStop; ?>').update('');
+            for (var i = val; i < countVersesStart; i++) {
+                $('<?php echo $verseVerseStop; ?>').appendChild(
+                    new Element('option', {'value': i})
+                        .update(parseInt(i) + 1)
+                );
+            }
+            $('<?php echo $verseVerseStop; ?>').show();
+        });
+
+        //fire Book events
+        $('<?php echo $verseBooks; ?>').simulate('change');
+
+        //preview functionality
+        $('<?php echo $versePreviewButton; ?>').observe('click', function (event) {
+            Event.stop(event);
+            new Ajax.Request('<?php echo $this->getUrl('*/index/operation'); ?>', {
+                method: 'post',
+                parameters: {
+                    'verse-translations': $('<?php echo $verseTranslations; ?>').value,
+                    'verse-numbering': $('<?php echo $verseNumbering; ?>').value,
+                    'verse-books': $('<?php echo $verseBooks; ?>').value,
+                    'verse-chapters': $('<?php echo $verseChapters; ?>').value,
+                    'verse-verse-start': $('<?php echo $verseVerseStart; ?>').value,
+                    'verse-verse-stop': $('<?php echo $verseVerseStop; ?>').value
+                },
+                onSuccess: function (transport) {
+                    var response = transport.responseText || "no response text";
+                    var json = response.evalJSON();
+                    //link
+                    $('<?php echo $versePreviewLink; ?>')
+                        .writeAttribute({
+                            'href': json.url,
+                            'style': ''
+                        })
+                        .update(json.url);
+                    //textarea
+                    var style;
+                    if ($('<?php echo $verseTranslations; ?>').value === 'tgr') {
+                        style = 'font-family: symbol; font-size: 14.9px; line-height: 18.9px;';
+                    } else {
+                        style = 'font-family: verdana,helvetica,arial; font-size: 12.9px; line-height: 18.9px;';
+                    }
+                    $('<?php echo $versePreviewTextArea; ?>').setAttribute('style', style);
+                    $('<?php echo $versePreviewTextArea; ?>').update(json.content);
+                },
+                onFailure: function () {
+                    alert('Something went wrong...');
+                }
+            });
+        });
+
+        //initial values
+        <?php if (!empty($defaultValues)) : ?>
+            $('<?php echo $verseTranslations; ?>').value = '<?php echo $defaultValues['translation']; ?>';
+            $('<?php echo $verseNumbering; ?>').value = '<?php echo $defaultValues['numbering']; ?>';
+            $('<?php echo $verseBooks; ?>').value = '<?php echo $defaultValues['books']; ?>';
+            $('<?php echo $verseBooks; ?>').simulate('change');
+            $('<?php echo $verseChapters; ?>').value = '<?php echo $defaultValues['chapters']; ?>';
+            $('<?php echo $verseChapters; ?>').simulate('change');
+            $('<?php echo $verseVerseStart; ?>').value = '<?php echo $defaultValues['start']; ?>';
+            $('<?php echo $verseVerseStart; ?>').simulate('change');
+            $('<?php echo $verseVerseStop; ?>').value = '<?php echo $defaultValues['stop']; ?>';
+        <?php else: ?>
+            $('<?php echo $verseTranslations; ?>').value = '<?php echo Mage::getStoreConfig('bible/settings/cgi_translation'); ?>';
+            $('<?php echo $verseNumbering; ?>').value = '<?php echo Mage::getStoreConfig('bible/settings/cgi_numbers'); ?>';
+        <?php endif; ?>
+    });
+</script>

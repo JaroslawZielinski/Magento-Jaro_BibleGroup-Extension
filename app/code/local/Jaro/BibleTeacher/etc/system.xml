@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+<config>
+    <tabs>
+        <jaro_bibleteacher translate="label" module="jaro_bibleteacher">
+            <label>Bible</label>
+            <sort_order>1</sort_order>
+        </jaro_bibleteacher>
+    </tabs>
+    <sections>
+        <bible translate="label" module="jaro_bibleteacher">
+            <class>separator-top</class>
+            <label>Bible</label>
+            <tab>jaro_bibleteacher</tab>
+            <sort_order>0</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <settings translate="label">
+                    <label>Settings</label>
+                    <sort_order>1</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>0</show_in_website>
+                    <show_in_store>0</show_in_store>
+                    <fields>
+                        <cgi_offline translate="label">
+                            <label>Bible Offline</label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>0</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                        </cgi_offline>
+                        <cgi_translation translate="label">
+                            <label>Translation</label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <source_model>jaro_bibleteacher/translations</source_model>
+                        </cgi_translation>
+                        <cgi_numbers translate="label">
+                            <label>Numbering of verses</label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                            <source_model>jaro_bibleteacher/numberings</source_model>
+                        </cgi_numbers>
+                    </fields>
+                </settings>
+            </groups>
+        </bible>
+    </sections>
+</config>

@@ -1,0 +1,27 @@
+<?php
+    $uniqid = $this->_getUID();
+    $searchContainer = 'search_container' . $uniqid;
+?>
+<link rel="stylesheet" type="text/css" href="<?php echo $this->getSkinUrl('css/jarobibleteacher/search.css',array('_secure'=>false));?>" media="all" />
+<div id="<?php echo $searchContainer; ?>">
+    <fieldset>
+        <div class="hor-scroll box-center">
+            <table class="form-list" cellspacing="0">
+                <tbody>
+                    <tr>
+                        <td class="label">
+                            <label style="">
+                                <span class="label-bold"><?php echo Mage::helper('jaro_bibleteacher')->__('Szukaj:'); ?></span>
+                            </label>
+                        </td>
+                        <td class="value">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </fieldset>
+</div>
+<script>
+//TODO:
+</script>

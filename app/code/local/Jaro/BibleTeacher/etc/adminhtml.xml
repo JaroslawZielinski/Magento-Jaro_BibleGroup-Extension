@@ -1,0 +1,77 @@
+<?xml version="1.0"?>
+<config>
+    <menu>
+        <jaro translate="title" module="jaro_bibleteacher">
+            <title>Jaro</title>
+            <sort_order>0</sort_order>
+            <children>
+                <jaro_bibleteacher_single>
+                    <title>Single Verse</title>
+                    <sort_order>0</sort_order>
+                    <action>jaro_bible_teacher/index/index</action>
+                </jaro_bibleteacher_single>
+                <jaro_bibleteacher_teachings>
+                    <title>Teachings</title>
+                    <sort_order>10</sort_order>
+                    <action>jaro_bible_teacher/teachings/index</action>
+                </jaro_bibleteacher_teachings>
+                <jaro_bibleteacher_all_verses>
+                    <title>All Verses (repair mode)</title>
+                    <sort_order>20</sort_order>
+                    <action>jaro_bible_teacher/verses/index</action>
+                </jaro_bibleteacher_all_verses>
+                <jaro_bibleteacher_all_canons>
+                    <title>All Canon Verses (repair mode)</title>
+                    <sort_order>30</sort_order>
+                    <action>jaro_bible_teacher/canons/index</action>
+                </jaro_bibleteacher_all_canons>    
+            </children>
+        </jaro>
+    </menu>
+    <acl>
+        <resources>
+            <admin>
+                <children>
+                    <jaro translate="title" module="jaro_bibleteacher">
+                        <title>Jaro</title>
+                        <children>
+                            <jaro_bibleteacher_single translate="title">
+                                <title>Single Verse</title>
+                                <sort_order>0</sort_order>
+                            </jaro_bibleteacher_single>
+                            <jaro_bibleteacher_teachings translate="title">
+                                <title>Teachings</title>
+                                <sort_order>10</sort_order>
+                            </jaro_bibleteacher_teachings>
+                            <jaro_bibleteacher_all_verses translate="title">
+                                <title>All Verses (repair mode)</title>
+                                <sort_order>20</sort_order>
+                            </jaro_bibleteacher_all_verses>
+                            <jaro_bibleteacher_all_canons translate="title">
+                                <title>All Canons Verses (repair mode)</title>
+                                <sort_order>30</sort_order>
+                            </jaro_bibleteacher_all_canons>
+                        </children>>
+                    </jaro>
+                    <system>
+                        <children>
+                            <config>
+                                <children>                
+                                    <bible translate="title" module="jaro_bibleteacher">
+                                        <title>Jaro Bible Configuration</title>
+                                        <sort_order>0</sort_order>
+                                        <children>
+                                            <settings>
+                                                <title>Settings</title>
+                                            </settings>
+                                        </children>
+                                    </bible>
+                                </children>
+                            </config>
+                        </children>
+                    </system>
+                </children>      
+            </admin>
+        </resources>
+    </acl>
+</config>
