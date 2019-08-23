@@ -8,7 +8,7 @@ class Jaro_BibleTeacher_Helper_Verses extends Mage_Core_Helper_Abstract
     /**
      * URL of the Bible Server
      */
-    const BIBLE_CGI_URL = 'http://www.biblia.net.pl/cgi-bin/biblia.cgi?';
+    const BIBLE_CGI_URL = 'https://biblia.info.pl/cgi-bin/biblia.cgi?';
 
     /**
      * REGEXP to fetch verse
