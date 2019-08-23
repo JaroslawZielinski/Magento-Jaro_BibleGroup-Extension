@@ -18,7 +18,7 @@ class Jaro_BibleTeacher_Helper_Verses extends Mage_Core_Helper_Abstract
     /**
      * CHARSET on Page
      */
-    const BIBLE_CGI_CHARSET_VALUE = 'ISO-8859-2';
+    const BIBLE_CGI_CHARSET_VALUE = 'UTF-8';
 
     /**
      * Bible Structure
