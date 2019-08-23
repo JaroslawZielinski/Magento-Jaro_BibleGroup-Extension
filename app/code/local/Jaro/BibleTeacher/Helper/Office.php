@@ -1,5 +1,8 @@
 <?php
 
+$appPath = Mage::getBaseDir('app');
+require_once $appPath . DIRECTORY_SEPARATOR . 'bootstrap.php';
+
 /**
  *
  */

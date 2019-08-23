@@ -1,8 +1,7 @@
 <?php
 
-require_once 'abstract.php';
-require_once dirname(dirname(__FILE__)) . DIRECTORY_SEPARATOR . 'lib' . DIRECTORY_SEPARATOR . 'ProgressBar' . DIRECTORY_SEPARATOR . 'Manager.php';
-require_once dirname(dirname(__FILE__)) . DIRECTORY_SEPARATOR . 'lib' . DIRECTORY_SEPARATOR . 'ProgressBar' . DIRECTORY_SEPARATOR . 'Registry.php';
+require_once 'shell/abstract.php';
+require_once 'app/bootstrap.php';
 
 /**
  * Class fetch_all_verses_all_translations

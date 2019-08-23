@@ -7,8 +7,6 @@ app/design/adminhtml/default/default/template/jaro_bibleteacher/    app/design/a
 app/locale/en_US/Jaro_BibleTeacher.csv  app/locale/en_US/Jaro_BibleTeacher.csv
 
 js/protolicious/ js/protolicious/
-lib/guiguiboy/php-cli-progress-bar/ lib/guiguiboy/php-cli-progress-bar/
-lib/phpoffice/ lib/phpoffice/
 
 shell/Bible/ shell/Bible/
 shell/fetch_all_verses_all_translations.php shell/fetch_all_verses_all_translations.php

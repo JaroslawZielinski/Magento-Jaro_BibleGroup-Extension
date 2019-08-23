@@ -3,6 +3,8 @@
   "type": "magento-module",
   "description": "Bible group tool",
   "require": {
+    "guiguiboy/php-cli-progress-bar": "dev-master",
+    "phpoffice/phpword": "dev-master"
   },
   "authors":[
     {
@@ -17,8 +19,6 @@
       ["app/design/adminhtml/default/default/template/jaro_bibleteacher", "app/design/adminhtml/default/default/template/jaro_bibleteacher"],
       ["app/locale/en_US/Jaro_BibleTeacher.csv", "app/locale/en_US/Jaro_BibleTeacher.csv"],
       ["js/protolicious", "js/protolicious"],
-      ["lib/guiguiboy/php-cli-progress-bar", "lib/guiguiboy/php-cli-progress-bar"],
-      ["lib/phpoffice", "lib/phpoffice"],
       ["shell/Bible", "shell/Bible"],
       ["shell/fetch_all_verses_all_translations.php", "shell/fetch_all_verses_all_translations.php"],
       ["shell/import_canons.php", "shell/import_canons.php"],
