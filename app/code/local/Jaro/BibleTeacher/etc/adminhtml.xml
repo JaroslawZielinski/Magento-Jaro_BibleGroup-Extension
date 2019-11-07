@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <config>
     <menu>
-        <jaro translate="title" module="jaro_bibleteacher">
-            <title>Jaro</title>
+        <jaro_bible translate="title" module="jaro_bibleteacher">
+            <title>Bible</title>
             <sort_order>0</sort_order>
             <children>
                 <jaro_bibleteacher_single>
@@ -26,13 +26,13 @@
                     <action>jaro_bible_teacher/canons/index</action>
                 </jaro_bibleteacher_all_canons>    
             </children>
-        </jaro>
+        </jaro_bible>
     </menu>
     <acl>
         <resources>
             <admin>
                 <children>
-                    <jaro translate="title" module="jaro_bibleteacher">
+                    <jaro_bible translate="title" module="jaro_bibleteacher">
                         <title>Jaro</title>
                         <children>
                             <jaro_bibleteacher_single translate="title">
@@ -51,8 +51,8 @@
                                 <title>All Canons Verses (repair mode)</title>
                                 <sort_order>30</sort_order>
                             </jaro_bibleteacher_all_canons>
-                        </children>>
-                    </jaro>
+                        </children>
+                    </jaro_bible>
                     <system>
                         <children>
                             <config>

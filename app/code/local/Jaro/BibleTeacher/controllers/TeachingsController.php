@@ -53,7 +53,7 @@ class Jaro_BibleTeacher_TeachingsController extends Mage_Adminhtml_Controller_Ac
     protected function _initAction()
     {
         $this->loadLayout()
-            ->_setActiveMenu('jaro/jaro_bibleteacher_teachings')
+            ->_setActiveMenu('jaro_bible/jaro_bibleteacher_teachings')
             ->_title(Mage::helper('jaro_bibleteacher')->__('Jaro'))->_title(Mage::helper('jaro_bibleteacher')->__('Teachings'))
             ->_addBreadcrumb(Mage::helper('jaro_bibleteacher')->__('Jaro'), Mage::helper('jaro_bibleteacher')->__('Teachings'))
             ->_addBreadcrumb(Mage::helper('jaro_bibleteacher')->__('Teachings'), Mage::helper('jaro_bibleteacher')->__('Teachings'));

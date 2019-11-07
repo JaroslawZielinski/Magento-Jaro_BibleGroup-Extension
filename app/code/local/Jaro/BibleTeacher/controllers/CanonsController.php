@@ -11,7 +11,7 @@ class Jaro_BibleTeacher_CanonsController extends Mage_Adminhtml_Controller_Actio
     public function indexAction()
     {
         $this->loadLayout()
-            ->_setActiveMenu('jaro/jaro_bibleteacher_teachings')
+            ->_setActiveMenu('jaro_bible/jaro_bibleteacher_teachings')
             ->_title(Mage::helper('jaro_bibleteacher')->__('Jaro'))->_title(Mage::helper('jaro_bibleteacher')->__('All Canon Verses'))
             ->_addBreadcrumb(Mage::helper('jaro_bibleteacher')->__('Jaro'), Mage::helper('jaro_bibleteacher')->__('All Canon Verses'))
             ->_addBreadcrumb(Mage::helper('jaro_bibleteacher')->__('All Canon Verses'), Mage::helper('jaro_bibleteacher')->__('All Canon Verses'));
