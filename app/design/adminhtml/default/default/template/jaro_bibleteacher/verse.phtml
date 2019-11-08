@@ -246,7 +246,7 @@ $versePreviewTextArea = 'verse_preview_text_area' . $uniqid;
         //preview functionality
         $('<?php echo $versePreviewButton; ?>').observe('click', function (event) {
             Event.stop(event);
-            new Ajax.Request('<?php echo $this->getUrl('*/index/operation'); ?>', {
+            new Ajax.Request('<?php echo $this->getUrl('*/adminhtml_index/operation'); ?>', {
                 method: 'post',
                 parameters: {
                     'verse-translations': $('<?php echo $verseTranslations; ?>').value,

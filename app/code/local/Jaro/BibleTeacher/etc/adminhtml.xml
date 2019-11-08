@@ -8,22 +8,22 @@
                 <jaro_bibleteacher_single>
                     <title>Single Verse</title>
                     <sort_order>0</sort_order>
-                    <action>jaro_bible_teacher/index/index</action>
+                    <action>jaro_bible_teacher/adminhtml_index/index</action>
                 </jaro_bibleteacher_single>
                 <jaro_bibleteacher_teachings>
                     <title>Teachings</title>
                     <sort_order>10</sort_order>
-                    <action>jaro_bible_teacher/teachings/index</action>
+                    <action>jaro_bible_teacher/adminhtml_teachings/index</action>
                 </jaro_bibleteacher_teachings>
                 <jaro_bibleteacher_all_verses>
                     <title>All Verses (repair mode)</title>
                     <sort_order>20</sort_order>
-                    <action>jaro_bible_teacher/verses/index</action>
+                    <action>jaro_bible_teacher/adminhtml_verses/index</action>
                 </jaro_bibleteacher_all_verses>
                 <jaro_bibleteacher_all_canons>
                     <title>All Canon Verses (repair mode)</title>
                     <sort_order>30</sort_order>
-                    <action>jaro_bible_teacher/canons/index</action>
+                    <action>jaro_bible_teacher/adminhtml_canons/index</action>
                 </jaro_bibleteacher_all_canons>    
             </children>
         </jaro_bible>

@@ -79,7 +79,7 @@ class Jaro_BibleTeacher_Block_Bible_Verses_Tab_Major_Grid extends Mage_Adminhtml
     {
         /** @var Jaro_BibleTeacher_Model_Teachings $teachings */
         $teachings = Mage::registry('jaro_bibleteacher_teachings');
-        return $this->getUrl('*/minor/index', [
+        return $this->getUrl('*/adminhtml_minor/index', [
             'teachings_id' => $teachings->getId(),
             'major_id' => $row->getId()
         ]);

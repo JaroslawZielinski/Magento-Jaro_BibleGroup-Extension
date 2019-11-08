@@ -55,6 +55,6 @@ class Jaro_BibleTeacher_Block_Bible_Verses_Tab_Teachings_Edit extends Mage_Admin
      */
     public function getDeleteUrl()
     {
-        return $this->getUrl('*/teachings/remove', [$this->_objectId => $this->getRequest()->getParam($this->_objectId)]);
+        return $this->getUrl('*/adminhtml_teachings/remove', [$this->_objectId => $this->getRequest()->getParam($this->_objectId)]);
     }
 }

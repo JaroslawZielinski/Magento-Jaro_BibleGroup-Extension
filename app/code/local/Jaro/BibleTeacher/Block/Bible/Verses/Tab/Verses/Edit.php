@@ -61,12 +61,12 @@ class Jaro_BibleTeacher_Block_Bible_Verses_Tab_Verses_Edit extends Mage_Adminhtm
      */
     public function getBackUrl()
     {
-        return $this->getUrl('*/verses/index');
+        return $this->getUrl('*/adminhtml_verses/index');
     }
 
     public function getDeleteUrl()
     {
-        return $this->getUrl('*/verses/delete', array($this->_objectId => $this->getRequest()->getParam($this->_objectId)));
+        return $this->getUrl('*/adminhtml_verses/delete', array($this->_objectId => $this->getRequest()->getParam($this->_objectId)));
     }
 
     /**

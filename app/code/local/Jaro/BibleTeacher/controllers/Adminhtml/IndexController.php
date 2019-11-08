@@ -1,9 +1,9 @@
 <?php
 
 /**
- * Class Jaro_BibleTeacher_IndexController
+ * Class Jaro_BibleTeacher_Adminhtml_IndexController
  */
-class Jaro_BibleTeacher_IndexController extends Mage_Adminhtml_Controller_Action
+class Jaro_BibleTeacher_Adminhtml_IndexController extends Mage_Adminhtml_Controller_Action
 {
     /**
      * 

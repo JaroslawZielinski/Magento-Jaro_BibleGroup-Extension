@@ -75,7 +75,7 @@ class Jaro_BibleTeacher_Block_Bible_Verses_Tab_Minor_Edit extends Mage_Adminhtml
      */
     public function getBackUrl()
     {
-        return $this->getUrl('*/minor/index', [
+        return $this->getUrl('*/adminhtml_minor/index', [
             'teachings_id' => $this->_teachingsId,
             'major_id' => $this->_majorId
         ]);
@@ -86,7 +86,7 @@ class Jaro_BibleTeacher_Block_Bible_Verses_Tab_Minor_Edit extends Mage_Adminhtml
      */
     public function getDeleteUrl()
     {
-        return $this->getUrl('*/minor/delete', [
+        return $this->getUrl('*/adminhtml_minor/delete', [
             $this->_objectId => $this->getRequest()->getParam($this->_objectId),
             'teachings_id' => $this->_teachingsId,
             'major_id' => $this->_majorId

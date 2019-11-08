@@ -36,7 +36,7 @@ class Jaro_BibleTeacher_Block_Bible_Verses_Tab_Minor extends Mage_Adminhtml_Bloc
         parent::__construct();
         $this->_addButton('back', array(
             'label' => Mage::helper('jaro_bibleteacher')->__('Back'),
-            'onclick' => "location.href = '". $this->getUrl('*/teachings/edit', ['id' => $this->_teachingsId]) . "'",
+            'onclick' => "location.href = '". $this->getUrl('*/adminhtml_teachings/edit', ['id' => $this->_teachingsId]) . "'",
             'class' => 'scalable back',
         ), 0, -10);
     }
@@ -46,7 +46,7 @@ class Jaro_BibleTeacher_Block_Bible_Verses_Tab_Minor extends Mage_Adminhtml_Bloc
      */
     public function getCreateUrl()
     {
-        return $this->getUrl('*/minor/new', [
+        return $this->getUrl('*/adminhtml_minor/new', [
             'teachings_id' => $this->_teachingsId,
             'major_id' => $this->_majorId
         ]);

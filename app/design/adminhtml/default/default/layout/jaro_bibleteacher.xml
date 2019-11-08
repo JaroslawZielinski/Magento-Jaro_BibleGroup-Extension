@@ -7,7 +7,8 @@
             </action>
         </reference>
     </default>
-    <jaro_bible_teacher_index_index>
+
+    <jaro_bible_teacher_adminhtml_index_index>
         <reference name="left">
             <block type="jaro_bibleteacher/bible_verses_tabs" name="bible_verses_tabs">
                 <block type="jaro_bibleteacher/bible_verses_tab_verse" name="bible_verses_tab_verse"
@@ -24,24 +25,28 @@
                 </action>
             </block>
         </reference>
+
         <reference name="content">
             <block type="jaro_bibleteacher/bible_verses" name="bible_verses"/>
         </reference>
-    </jaro_bible_teacher_index_index>
-    <jaro_bible_teacher_index_verse>
+    </jaro_bible_teacher_adminhtml_index_index>
+
+    <jaro_bible_teacher_adminthml_index_verse>
         <reference name="content">
             <block type="jaro_bibleteacher/bible_verses_tab_verse" name="bible_verses_tab_verse"
                    template="jaro_bibleteacher/verse.phtml"/>
         </reference>
-    </jaro_bible_teacher_index_verse>
-    <jaro_bible_teacher_index_operation>
+    </jaro_bible_teacher_adminthml_index_verse>
+
+    <jaro_bible_teacher_adminhtml_index_operation>
         <reference name="content">
             <block type="page/html" name="root" output="toHtml" template="jaro_bibleteacher/operation.phtml"/>
         </reference>
-    </jaro_bible_teacher_index_operation>
-    <jaro_bible_teacher_teachings_index>
+    </jaro_bible_teacher_adminhtml_index_operation>
+
+    <jaro_bible_teacher_adminhtml_teachings_index>
         <reference name="content">
             <block type="jaro_bibleteacher/bible_verses_tab_teachings" name="jaro_bibleteacher_bible_verses_tab_teachings"/>
         </reference>
-    </jaro_bible_teacher_teachings_index>
+    </jaro_bible_teacher_adminhtml_teachings_index>
 </layout>

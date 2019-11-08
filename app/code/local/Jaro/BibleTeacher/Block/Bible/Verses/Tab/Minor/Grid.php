@@ -73,7 +73,7 @@ class Jaro_BibleTeacher_Block_Bible_Verses_Tab_Minor_Grid extends Mage_Adminhtml
 
     public function getRowUrl($row)
     {
-        return $this->getUrl('*/minor/edit', [
+        return $this->getUrl('*/adminhtml_minor/edit', [
             'teachings_id' => $this->_teachingsId,
             'major_id' => $this->_majorId,
             'id' => $row->getId()

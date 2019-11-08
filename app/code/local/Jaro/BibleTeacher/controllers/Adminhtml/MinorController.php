@@ -1,21 +1,34 @@
 <?php
 
 /**
- * Class Jaro_BibleTeacher_CanonsController
+ * Class Jaro_BibleTeacher_Adminhtml_MinorController
  */
-class Jaro_BibleTeacher_CanonsController extends Mage_Adminhtml_Controller_Action
+class Jaro_BibleTeacher_Adminhtml_MinorController extends Mage_Adminhtml_Controller_Action
 {
     /**
      *
      */
     public function indexAction()
     {
-        $this->loadLayout()
-            ->_setActiveMenu('jaro_bible/jaro_bibleteacher_teachings')
-            ->_title(Mage::helper('jaro_bibleteacher')->__('Jaro'))->_title(Mage::helper('jaro_bibleteacher')->__('All Canon Verses'))
-            ->_addBreadcrumb(Mage::helper('jaro_bibleteacher')->__('Jaro'), Mage::helper('jaro_bibleteacher')->__('All Canon Verses'))
-            ->_addBreadcrumb(Mage::helper('jaro_bibleteacher')->__('All Canon Verses'), Mage::helper('jaro_bibleteacher')->__('All Canon Verses'));
-        $this->_addContent($this->getLayout()->createBlock('jaro_bibleteacher/bible_verses_tab_canons'));
+        $majorId = $this->getRequest()->getParam('major_id');
+
+        $model = Mage::getModel('jaro_bibleteacher/verses');
+
+        if ($majorId) {
+            $model->load($majorId);
+            if (!$model->getId()) {
+                $this->_getSession()->addError(
+                    Mage::helper('jaro_bibleteacher')->__('This Verses no longer exists.')
+                );
+                $this->_redirect('*/*/');
+                return;
+            }
+        }
+
+        Mage::register('jaro_bibleteacher_major_verses', $model);
+
+        $this->loadLayout();
+        $this->_addContent($this->getLayout()->createBlock('jaro_bibleteacher/bible_verses_tab_minor'));
         $this->renderLayout();
     }
 
@@ -24,8 +37,8 @@ class Jaro_BibleTeacher_CanonsController extends Mage_Adminhtml_Controller_Actio
      */
     public function exportCsvAction()
     {
-        $fileName = 'CanonsVerses_export.csv';
-        $content = $this->getLayout()->createBlock('jaro_bibleteacher/bible_verses_tab_canons_grid')->getCsv();
+        $fileName = 'Minor_export.csv';
+        $content = $this->getLayout()->createBlock('jaro_bibleteacher/bible_verses_tab_minor_grid')->getCsv();
         $this->_prepareDownloadResponse($fileName, $content);
     }
 
@@ -34,8 +47,8 @@ class Jaro_BibleTeacher_CanonsController extends Mage_Adminhtml_Controller_Actio
      */
     public function exportExcelAction()
     {
-        $fileName = 'CanonsVerses_export.xml';
-        $content = $this->getLayout()->createBlock('jaro_bibleteacher/bible_verses_tab_canons_grid')->getExcelFile();
+        $fileName = 'Minor_export.xml';
+        $content = $this->getLayout()->createBlock('jaro_bibleteacher/bible_verses_tab_minor_grid')->getExcelFile();
         $this->_prepareDownloadResponse($fileName, $content);
     }
 
@@ -45,12 +58,15 @@ class Jaro_BibleTeacher_CanonsController extends Mage_Adminhtml_Controller_Actio
     public function massDeleteAction()
     {
         $ids = $this->getRequest()->getParam('ids');
+        $teachingsId = $this->getRequest()->getParam('teachings_id');
+        $majorId = $this->getRequest()->getParam('major_id');
+
         if (!is_array($ids)) {
-            $this->_getSession()->addError($this->__('Please select Canons Verses(s).'));
+            $this->_getSession()->addError($this->__('Please select Verses(s).'));
         } else {
             try {
                 foreach ($ids as $id) {
-                    $model = Mage::getSingleton('jaro_bibleteacher/bible')->load($id);
+                    $model = Mage::getSingleton('jaro_bibleteacher/verses')->load($id);
                     $model->delete();
                 }
 
@@ -67,7 +83,10 @@ class Jaro_BibleTeacher_CanonsController extends Mage_Adminhtml_Controller_Actio
                 return;
             }
         }
-        $this->_redirect('*/canons/index');
+        $this->_redirect('*/adminhtml_minor/index', [
+            'teachings_id' => $teachingsId,
+            'major_id' => $majorId
+        ]);
     }
 
     /**
@@ -76,13 +95,13 @@ class Jaro_BibleTeacher_CanonsController extends Mage_Adminhtml_Controller_Actio
     public function editAction()
     {
         $id = $this->getRequest()->getParam('id');
-        $model = Mage::getModel('jaro_bibleteacher/bible');
+        $model = Mage::getModel('jaro_bibleteacher/verses');
 
         if ($id) {
             $model->load($id);
             if (!$model->getId()) {
                 $this->_getSession()->addError(
-                    Mage::helper('jaro_bibleteacher')->__('This Canons Verses no longer exists.')
+                    Mage::helper('jaro_bibleteacher')->__('This Verses no longer exists.')
                 );
                 $this->_redirect('*/*/');
                 return;
@@ -94,10 +113,10 @@ class Jaro_BibleTeacher_CanonsController extends Mage_Adminhtml_Controller_Actio
             $model->setData($data);
         }
 
-        Mage::register('jaro_bibleteacher_canons', $model);
+        Mage::register('jaro_bibleteacher_minor_verses', $model);
 
         $this->loadLayout();
-        $this->_addContent($this->getLayout()->createBlock('jaro_bibleteacher/bible_verses_tab_canons_edit'));
+        $this->_addContent($this->getLayout()->createBlock('jaro_bibleteacher/bible_verses_tab_minor_edit'));
         $this->renderLayout();
     }
 
@@ -114,19 +133,25 @@ class Jaro_BibleTeacher_CanonsController extends Mage_Adminhtml_Controller_Actio
      */
     public function saveAction()
     {
+        $teachinsId = $this->getRequest()->getParam('teachings_id');
+        $majorId = $this->getRequest()->getParam('major_id');
+
         $redirectBack = $this->getRequest()->getParam('back', false);
         if ($postData = $this->getRequest()->getPost()) {
 
             $id = $this->getRequest()->getParam('id');
-            /** @var Jaro_BibleTeacher_Model_Bible $model */
-            $model = Mage::getModel('jaro_bibleteacher/bible');
+            /** @var Jaro_BibleTeacher_Model_Verses $model */
+            $model = Mage::getModel('jaro_bibleteacher/verses');
             if ($id) {
                 $model->load($id);
                 if (!$model->getId()) {
                     $this->_getSession()->addError(
-                        Mage::helper('jaro_bibleteacher')->__('This Canons Verses no longer exists.')
+                        Mage::helper('jaro_bibleteacher')->__('This Verses no longer exists.')
                     );
-                    $this->_redirect('*/canons/index');
+                    $this->_redirect('*/adminhtml_minor/index', [
+                        'teachings_id' => $teachinsId,
+                        'major_id' => $majorId
+                    ]);
                     return;
                 }
             }
@@ -139,7 +164,7 @@ class Jaro_BibleTeacher_CanonsController extends Mage_Adminhtml_Controller_Actio
 
             $numberingId = Mage::getSingleton('jaro_bibleteacher/numberings')
                 ->getCollection()
-                ->addFieldToFilter('code', ['eq' => $postData['verse-numbering']])
+                ->addFieldToFilter('code', ['eq' => Jaro_BibleTeacher_Model_Numberings::NUMBERINGS_NO])
                 ->getFirstItem()
                 ->getId();
 
@@ -162,23 +187,29 @@ class Jaro_BibleTeacher_CanonsController extends Mage_Adminhtml_Controller_Actio
 
                 $this->_getSession()->setFormData(false);
                 $this->_getSession()->addSuccess(
-                    Mage::helper('jaro_bibleteacher')->__('The Canons Verses has been saved.')
+                    Mage::helper('jaro_bibleteacher')->__('The Verses has been saved (%s).', Mage::helper('jaro_bibleteacher/verses')->getSiglaByVerse($model))
                 );
             } catch (Mage_Core_Exception $e) {
                 $this->_getSession()->addError($e->getMessage());
                 $redirectBack = true;
             } catch (Exception $e) {
-                $this->_getSession()->addError(Mage::helper('jaro_bibleteacher')->__('Unable to save the Canons Verses.') . $e->getMessage());
+                $this->_getSession()->addError(Mage::helper('jaro_bibleteacher')->__('Unable to save the Verses.'));
                 $redirectBack = true;
                 Mage::logException($e);
             }
 
             if ($redirectBack) {
-                $this->_redirect('*/canons/new');
+                $this->_redirect('*/adminhtml_minor/new', [
+                    'teachings_id' => $teachinsId,
+                    'major_id' => $majorId
+                ]);
                 return;
             }
         }
-        $this->_redirect('*/canons/index');
+        $this->_redirect('*/adminhtml_minor/index', [
+            'teachings_id' => $teachinsId,
+            'major_id' => $majorId
+        ]);
     }
 
     /**
@@ -186,40 +217,53 @@ class Jaro_BibleTeacher_CanonsController extends Mage_Adminhtml_Controller_Actio
      */
     public function deleteAction()
     {
+        $teachingsId = $this->getRequest()->getParam('teachings_id');
+        $majorId = $this->getRequest()->getParam('major_id');
+
         if ($id = $this->getRequest()->getParam('id')) {
             try {
                 // init model and delete
-                $model = Mage::getModel('jaro_bibleteacher/bible');
+                $model = Mage::getModel('jaro_bibleteacher/verses');
                 $model->load($id);
                 if (!$model->getId()) {
-                    Mage::throwException(Mage::helper('jaro_bibleteacher')->__('Unable to find a Canons Verses to delete.'));
+                    Mage::throwException(Mage::helper('jaro_bibleteacher')->__('Unable to find a Verses to delete.'));
                 }
                 $model->delete();
                 // display success message
                 $this->_getSession()->addSuccess(
-                    Mage::helper('jaro_bibleteacher')->__('The Canons Verses has been deleted.')
+                    Mage::helper('jaro_bibleteacher')->__('The Verses has been deleted.')
                 );
                 // go to grid
-                $this->_redirect('*/canons/index');
+                $this->_redirect('*/adminhtml_minor/index', [
+                    'teachings_id' => $teachingsId,
+                    'major_id' => $majorId
+                ]);
                 return;
             } catch (Mage_Core_Exception $e) {
                 $this->_getSession()->addError($e->getMessage());
             } catch (Exception $e) {
                 $this->_getSession()->addError(
-                    Mage::helper('jaro_bibleteacher')->__('An error occurred while deleting Canons Verses data. Please review log and try again.')
+                    Mage::helper('jaro_bibleteacher')->__('An error occurred while deleting Verses data. Please review log and try again.')
                 );
                 Mage::logException($e);
             }
             // redirect to edit form
-            $this->_redirect('*/canons/edit', array('id' => $id));
+            $this->_redirect('*/adminhtml_minor/edit', [
+                'id' => $id,
+                'teachings_id' => $teachingsId,
+                'major_id' => $majorId
+            ]);
             return;
         }
 // display error message
         $this->_getSession()->addError(
-            Mage::helper('jaro_bibleteacher')->__('Unable to find a Canons Verses to delete.')
+            Mage::helper('jaro_bibleteacher')->__('Unable to find a Verses to delete.')
         );
 // go to grid
-        $this->_redirect('*/canons/index');
+        $this->_redirect('*/adminhtml_minor/index', [
+            'teachings_id' => $teachingsId,
+            'major_id' => $majorId
+        ]);
     }
 
     /**
@@ -229,6 +273,6 @@ class Jaro_BibleTeacher_CanonsController extends Mage_Adminhtml_Controller_Actio
      */
     protected function _isAllowed()
     {
-        return Mage::getSingleton('admin/session')->isAllowed('admin/jaro/jaro_bibleteacher_all_canons');
+        return Mage::getSingleton('admin/session')->isAllowed('admin/jaro/jaro_bibleteacher_teachings');
     }
 }

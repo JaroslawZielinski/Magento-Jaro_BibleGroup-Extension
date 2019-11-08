@@ -17,7 +17,7 @@ class Jaro_BibleTeacher_Block_Bible_Verses_Tab_Verses extends Mage_Adminhtml_Blo
 
     public function getCreateUrl()
     {
-        return $this->getUrl('*/verses/new');
+        return $this->getUrl('*/adminhtml_verses/new');
     }
 
 }

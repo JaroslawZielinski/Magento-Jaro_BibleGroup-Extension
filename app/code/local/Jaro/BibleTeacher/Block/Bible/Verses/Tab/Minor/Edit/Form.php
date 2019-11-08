@@ -56,7 +56,7 @@ class Jaro_BibleTeacher_Block_Bible_Verses_Tab_Minor_Edit_Form extends Mage_Admi
 
         $form = new Varien_Data_Form(array(
             'id' => 'edit_form',
-            'action' => $this->getUrl('*/minor/save',[
+            'action' => $this->getUrl('*/adminhtml_minor/save',[
                 'teachings_id' => $this->_teachingsId,
                 'major_id' => $this->_majorId
             ]),

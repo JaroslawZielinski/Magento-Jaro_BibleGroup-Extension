@@ -1,16 +1,25 @@
 #Jaro_BibleTeacher
 app/etc/modules/Jaro_BibleTeacher.xml   app/etc/modules/Jaro_BibleTeacher.xml
 app/code/local/Jaro/BibleTeacher/   app/code/local/Jaro/BibleTeacher/
+
+#admin html design
 app/design/adminhtml/default/default/layout/jaro_bibleteacher.xml   app/design/adminhtml/default/default/layout/jaro_bibleteacher.xml
 app/design/adminhtml/default/default/template/jaro_bibleteacher/    app/design/adminhtml/default/default/template/jaro_bibleteacher/
 
+#frontend html design
+app/design/frontend/workbench/default/layout/jaro/bibleteacher.xml    app/design/frontend/workbench/default/layout/jaro/bibleteacher.xml
+app/design/frontend/workbench/default/template/jaro/bibleteacher/    app/design/frontend/workbench/default/template/jaro/bibleteacher/
 app/locale/en_US/Jaro_BibleTeacher.csv  app/locale/en_US/Jaro_BibleTeacher.csv
 
-js/protolicious/ js/protolicious/
+#css/js
+js/jaro_bibleteacher/  js/jaro_bibleteacher/
+js/protolicious/  js/protolicious/
 
+#shell scripts
 shell/Bible/ shell/Bible/
 shell/fetch_all_verses_all_translations.php shell/fetch_all_verses_all_translations.php
 shell/import_canons.php shell/import_canons.php
 shell/test_all_verses_all_translations.php  shell/test_all_verses_all_translations.php
 
+#skin css
 skin/adminhtml/default/default/css/jarobibleteacher/    skin/adminhtml/default/default/css/jarobibleteacher/

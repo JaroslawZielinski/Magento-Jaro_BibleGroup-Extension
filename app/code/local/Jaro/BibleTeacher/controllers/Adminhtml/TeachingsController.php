@@ -1,9 +1,9 @@
 <?php
 
 /**
- * Class Jaro_BibleTeacher_TeachingsController
+ * Class Jaro_BibleTeacher_Adminhtml_TeachingsController
  */
-class Jaro_BibleTeacher_TeachingsController extends Mage_Adminhtml_Controller_Action
+class Jaro_BibleTeacher_Adminhtml_TeachingsController extends Mage_Adminhtml_Controller_Action
 {
     /**
      *
@@ -114,7 +114,7 @@ class Jaro_BibleTeacher_TeachingsController extends Mage_Adminhtml_Controller_Ac
             ->_addContent($this
                 ->getLayout()
                 ->createBlock('jaro_bibleteacher/bible_verses_tab_teachings_edit')
-                ->setData('action', $this->getUrl('*/teachings/save'))
+                ->setData('action', $this->getUrl('*/adminhtml_teachings/save'))
             )->_addContent($this
                 ->getLayout()
                 ->createBlock('jaro_bibleteacher/bible_verses_tab_teachings_edit_form')
@@ -198,7 +198,7 @@ class Jaro_BibleTeacher_TeachingsController extends Mage_Adminhtml_Controller_Ac
             }
         }
 
-        $this->_redirect('*/teachings/index');
+        $this->_redirect('*/adminhtml_teachings/index');
     }
 
     /**
@@ -270,7 +270,7 @@ class Jaro_BibleTeacher_TeachingsController extends Mage_Adminhtml_Controller_Ac
             }
 
             if ($redirectBack) {
-                $this->_redirect('*/teachings/edit', array('id' => $model->getId()));
+                $this->_redirect('*/adminhtml_teachings/edit', array('id' => $model->getId()));
                 return;
             }
 

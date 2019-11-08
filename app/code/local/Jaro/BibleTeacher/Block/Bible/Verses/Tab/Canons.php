@@ -17,7 +17,7 @@ class Jaro_BibleTeacher_Block_Bible_Verses_Tab_Canons extends Mage_Adminhtml_Blo
 
     public function getCreateUrl()
     {
-        return $this->getUrl('*/canons/new');
+        return $this->getUrl('*/adminhtml_canons/new');
     }
 
 }

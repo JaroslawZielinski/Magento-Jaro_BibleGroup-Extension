@@ -80,6 +80,24 @@
             </cronexample_crontest>
         </jobs>
     </crontab>
+    <frontend>
+        <routers>
+            <jaro_bibleteacher>
+                <use>standard</use>
+                <args>
+                    <module>Jaro_BibleTeacher</module>
+                    <frontName>bible_teacher</frontName>
+                </args>
+            </jaro_bibleteacher>
+        </routers>
+        <layout>
+            <updates>
+                <jaro_bibleteacher module="Jaro_BibleTeacher">
+                    <file>jaro/bibleteacher.xml</file>
+                </jaro_bibleteacher>
+            </updates>
+        </layout>
+    </frontend>
     <adminhtml>
         <translate>
             <modules>
@@ -117,5 +135,12 @@
                 <cgi_translation>tbw</cgi_translation>
             </settings>
         </bible>
+        <default>
+            <plaintable_general>
+                <navigation>
+                    <navigation_routers>a:1:{s:18:"_1573197403435_435";a:4:{s:4:"name";s:9:"Favourite";s:4:"path";s:29:"bible_teacher/favourite/index";s:5:"order";s:3:"120";s:11:"auth_status";s:1:"1";}}</navigation_routers>
+                </navigation>
+            </plaintable_general>
+        </default>
     </default>
 </config>

@@ -37,7 +37,7 @@ class Jaro_BibleTeacher_Block_Bible_Verses_Tab_Verses_Edit_Form extends Mage_Adm
         $modelTitle = $this->_getModelTitle();
         $form = new Varien_Data_Form(array(
             'id' => 'edit_form',
-            'action' => $this->getUrl('*/verses/save'),
+            'action' => $this->getUrl('*/adminhtml_verses/save'),
             'method' => 'post'
         ));
 

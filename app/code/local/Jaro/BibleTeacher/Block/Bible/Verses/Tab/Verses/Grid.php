@@ -140,7 +140,7 @@ class Jaro_BibleTeacher_Block_Bible_Verses_Tab_Verses_Grid extends Mage_Adminhtm
 
     public function getRowUrl($row)
     {
-        return $this->getUrl('*/verses/edit', array('id' => $row->getId()));
+        return $this->getUrl('*/adminhtml_verses/edit', array('id' => $row->getId()));
     }
 
     protected function _prepareMassaction()

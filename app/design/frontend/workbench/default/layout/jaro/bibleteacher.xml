@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+
+    <base_for_jaro_bibleteacher>
+        <update handle="page_one_column"/>
+
+        <remove name="my-content"/>
+
+        <reference name="head">
+            <action method="addItem">
+                <type>js_css</type>
+                <name>jaro_bibleteacher/content.css</name>
+            </action>
+        </reference>
+    </base_for_jaro_bibleteacher>
+
+    <jaro_bibleteacher_favourite_index>
+        <update handle="base_for_jaro_bibleteacher"/>
+
+        <reference name="content">
+            <block type="jaro_bibleteacher/favourite" name="jaro_bibleteacher_content" template="jaro/bibleteacher/favourite.phtml"/>
+        </reference>
+    </jaro_bibleteacher_favourite_index>
+</layout>

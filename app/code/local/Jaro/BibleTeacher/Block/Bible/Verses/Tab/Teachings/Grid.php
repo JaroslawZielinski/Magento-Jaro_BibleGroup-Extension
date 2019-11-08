@@ -98,12 +98,12 @@ class Jaro_BibleTeacher_Block_Bible_Verses_Tab_Teachings_Grid extends Mage_Admin
                 'actions'   => array(
                     array(
                         'caption' => Mage::helper('jaro_bibleteacher')->__('Edit'),
-                        'url'     => array('base'=>'*/teachings/edit'),
+                        'url'     => array('base'=>'*/adminhtml_teachings/edit'),
                         'field'   => 'id'
                     ),
                     array(
                         'caption' => Mage::helper('jaro_bibleteacher')->__('Download'),
-                        'url'     => array('base'=>'*/teachings/downloadPHPWordDocument'),
+                        'url'     => array('base'=>'*/adminhtml_teachings/downloadPHPWordDocument'),
                         'field'   => 'id'
                     ),
 
@@ -113,8 +113,8 @@ class Jaro_BibleTeacher_Block_Bible_Verses_Tab_Teachings_Grid extends Mage_Admin
                 'is_system' => true
             ));
 
-//        $this->addExportType('*/teachings/exportCsv', Mage::helper('jaro_bibleteacher')->__('CSV'));
-//        $this->addExportType('*/teachings/exportExcel', Mage::helper('jaro_bibleteacher')->__('Excel XML'));
+//        $this->addExportType('*/adminhtml_teachings/exportCsv', Mage::helper('jaro_bibleteacher')->__('CSV'));
+//        $this->addExportType('*/adminhtml_teachings/exportExcel', Mage::helper('jaro_bibleteacher')->__('Excel XML'));
 
         return parent::_prepareColumns();
     }
