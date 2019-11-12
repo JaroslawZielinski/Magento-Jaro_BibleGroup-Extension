@@ -138,7 +138,7 @@
         <default>
             <plaintable_general>
                 <navigation>
-                    <navigation_routers>a:1:{s:18:"_1573197403435_435";a:4:{s:4:"name";s:9:"Favourite";s:4:"path";s:29:"bible_teacher/favourite/index";s:5:"order";s:3:"120";s:11:"auth_status";s:1:"1";}}</navigation_routers>
+                    <navigation_routers>a:3:{s:18:"_1571982790353_353";a:4:{s:4:"name";s:5:"Admin";s:4:"path";s:5:"admin";s:5:"order";s:3:"130";s:11:"auth_status";s:1:"0";}s:18:"_1571982799438_438";a:4:{s:4:"name";s:4:"News";s:4:"path";s:17:"task_1/news/index";s:5:"order";s:3:"110";s:11:"auth_status";s:1:"1";}s:18:"_1573224008443_443";a:4:{s:4:"name";s:9:"Favourite";s:4:"path";s:29:"bible_teacher/favourite/index";s:5:"order";s:3:"120";s:11:"auth_status";s:1:"1";}}</navigation_routers>
                 </navigation>
             </plaintable_general>
         </default>

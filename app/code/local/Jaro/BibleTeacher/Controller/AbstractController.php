@@ -10,10 +10,10 @@ class Jaro_BibleTeacher_Controller_AbstractController extends Mage_Core_Controll
      */
     protected function _canRender()
     {
-//        $sessionCustomer = Mage::getSingleton("customer/session");
-//        if (!$sessionCustomer->isLoggedIn()) {
-//            Mage::app()->getFrontController()->getResponse()->setRedirect(Mage::getUrl('customer/account'));
-//        }
+        $sessionCustomer = Mage::getSingleton("customer/session");
+        if (!$sessionCustomer->isLoggedIn()) {
+            Mage::app()->getFrontController()->getResponse()->setRedirect(Mage::getUrl('customer/account'));
+        }
 
         return $this;
     }

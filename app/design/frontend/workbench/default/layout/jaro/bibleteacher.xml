@@ -18,7 +18,7 @@
         <update handle="base_for_jaro_bibleteacher"/>
 
         <reference name="content">
-            <block type="jaro_bibleteacher/favourite" name="jaro_bibleteacher_content" template="jaro/bibleteacher/favourite.phtml"/>
+            <block type="core/template" name="jaro_bibleteacher_content" template="jaro/bibleteacher/favourite.phtml"/>
         </reference>
     </jaro_bibleteacher_favourite_index>
 </layout>
