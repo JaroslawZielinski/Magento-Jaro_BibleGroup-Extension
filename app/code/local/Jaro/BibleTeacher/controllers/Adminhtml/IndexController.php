@@ -42,6 +42,6 @@ class Jaro_BibleTeacher_Adminhtml_IndexController extends Mage_Adminhtml_Control
      */
     protected function _isAllowed()
     {
-        return Mage::getSingleton('admin/session')->isAllowed('admin/jaro/jaro_bibleteacher_single');
+        return Mage::getSingleton('admin/session')->isAllowed('admin/jaro_bible/jaro_bibleteacher_single');
     }
 }

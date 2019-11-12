@@ -33,7 +33,7 @@
             <admin>
                 <children>
                     <jaro_bible translate="title" module="jaro_bibleteacher">
-                        <title>Jaro</title>
+                        <title>Jaro Bible</title>
                         <children>
                             <jaro_bibleteacher_single translate="title">
                                 <title>Single Verse</title>

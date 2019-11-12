@@ -42,7 +42,7 @@ class Jaro_BibleTeacher_Adminhtml_TeachingsController extends Mage_Adminhtml_Con
      */
     protected function _isAllowed()
     {
-        return Mage::getSingleton('admin/session')->isAllowed('admin/jaro/jaro_bibleteacher_teachings');
+        return Mage::getSingleton('admin/session')->isAllowed('admin/jaro_bible/jaro_bibleteacher_teachings');
     }
 
     /**

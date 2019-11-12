@@ -229,6 +229,6 @@ class Jaro_BibleTeacher_Adminhtml_CanonsController extends Mage_Adminhtml_Contro
      */
     protected function _isAllowed()
     {
-        return Mage::getSingleton('admin/session')->isAllowed('admin/jaro/jaro_bibleteacher_all_canons');
+        return Mage::getSingleton('admin/session')->isAllowed('admin/jaro_bible/jaro_bibleteacher_all_canons');
     }
 }

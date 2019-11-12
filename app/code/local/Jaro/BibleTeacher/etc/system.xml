@@ -1,17 +1,17 @@
 <?xml version="1.0"?>
 <config>
     <tabs>
-        <jaro_bibleteacher translate="label" module="jaro_bibleteacher">
-            <label>Bible</label>
+        <jaro translate="label">
+            <label>Jaro</label>
             <sort_order>1</sort_order>
-        </jaro_bibleteacher>
+        </jaro>
     </tabs>
     <sections>
         <bible translate="label" module="jaro_bibleteacher">
             <class>separator-top</class>
             <label>Bible</label>
-            <tab>jaro_bibleteacher</tab>
-            <sort_order>0</sort_order>
+            <tab>jaro</tab>
+            <sort_order>50</sort_order>
             <show_in_default>1</show_in_default>
             <show_in_website>1</show_in_website>
             <show_in_store>1</show_in_store>
