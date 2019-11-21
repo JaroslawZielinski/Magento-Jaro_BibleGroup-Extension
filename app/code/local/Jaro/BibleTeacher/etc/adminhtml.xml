@@ -3,7 +3,7 @@
     <menu>
         <jaro_bible translate="title" module="jaro_bibleteacher">
             <title>Bible</title>
-            <sort_order>0</sort_order>
+            <sort_order>20</sort_order>
             <children>
                 <jaro_bibleteacher_single>
                     <title>Single Verse</title>
