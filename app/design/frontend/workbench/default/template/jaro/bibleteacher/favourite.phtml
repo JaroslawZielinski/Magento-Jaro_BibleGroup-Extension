@@ -1,7 +1,11 @@
 <div class="jumbotron">
-    <div class="container">
-        <h1 class="display-3"><?=$this->getTitle()?></h1>
-        <p><?=$this->getContent()?></p>
-        <p><a class="btn btn-primary btn-lg" href="<?=$this->getLink()?>" target="_blank" role="button"><?=$this->getLinkLabel()?></a></p>
-    </div>
+    <?php if (!empty($this->getContent())) : ?>
+        <div class="container">
+                <h1 class="display-3"><?=$this->getTitle()?></h1>
+                <p><?=$this->getContent()?></p>
+                <p><a class="btn btn-primary btn-lg" href="<?=$this->getLink()?>" target="_blank" role="button"><?=$this->getLinkLabel()?></a></p>
+        </div>
+    <?php else: ?>
+        <p><?=$this->__('There are no verses set.') ?></p>
+    <?php endif; ?>
 </div>
